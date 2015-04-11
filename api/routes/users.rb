@@ -12,15 +12,15 @@ module Sinatra
           users_impl = UsersImpl.new
 
           get_users = lambda do
-            users_impl.get_users(request.body.read).to_json(except: :_id)
+            users_impl.get_users(params['userName'], params['clan']).to_json(except: :_id)
           end
 
           post_user = lambda do
-            users_impl.post_user(request.body.read)
+            users_impl.post_user(JSON.parse(request.body.read)).to_json
           end
 
           app.get '/users', &get_users
-          app.post '/user', &post_user
+          app.post '/users', &post_user
 
         end
       end

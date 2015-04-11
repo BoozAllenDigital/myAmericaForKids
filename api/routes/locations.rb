@@ -12,15 +12,15 @@ module Sinatra
           locations_impl = LocationsImpl.new
 
           get_locations = lambda do
-            locations_impl.get_user_locations(request.body.read).to_json(except: :_id)
+            locations_impl.get_user_locations(params['userName']).to_json(except: :_id)
           end
 
           post_location = lambda do
-            locations_impl.create_location(request.body.read).to_json
+            locations_impl.create_location(JSON.parse(request.body.read)).to_json
           end
 
           app.get '/locations', &get_locations
-          app.post '/location', &post_location
+          app.post '/locations', &post_location
         end
       end
     end

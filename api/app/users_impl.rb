@@ -5,9 +5,11 @@ require_relative '../models/users'
 
 class UsersImpl
 
-  def get_users(params)
-    if params['clan']
-      Users.where(clan: params['clan'])
+  def get_users(userName, clan)
+    if clan
+      Users.where(clan: clan)
+    elsif userName
+      Users.where(userName: userName)
     else
       Users.all
     end
@@ -18,12 +20,13 @@ class UsersImpl
   end
 
   def post_user(params)
-    if Users.where(userName: params['userName']).exists?
+    if Users.where(user_name: params['userName']).exists?
       return 'User already exists'
     else
       user = Users.new
       user.userName = params['userName']
-      user.name = params['name']
+      user.firstName = params['firstName']
+      user.lastName = params['lastName']
       user.clan = params['clan']
       user.insert
       return 'User created'

@@ -2,12 +2,20 @@ require_relative '../models/locations'
 
 class LocationsImpl
 
-  def get_user_locations(params)
-    Locations.where(user_name: params['userName'])
+  def get_user_locations(userName)
+    Locations.where(user_name: userName)
   end
 
   def create_location(params)
-    Locations.create(latitude: params['latitude'], longitude: params['longitude'], recarea_id: params['recareaId'], timestamp: Time.now, bonus: params['bonus'])
+    location = Locations.new
+    location.userName = params['userName']
+    location.latitude = params['latitude']
+    location.longitude = params['longitude']
+    location.recAreaId = params['recareaId']
+    location.timestamp = Time.now
+    location.score = params['score']
+    location.fromCamera = params['fromCamera']
+    location.insert
     return 'Location added for user'
   end
 end

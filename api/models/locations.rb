@@ -10,6 +10,7 @@ class Locations
   field :'longitude', as: :longtidue, type: String
   field :'recAreaId', as: :recarea_id, type: String
   field :'timestamp', as: :timestamp, type: Date
-  field :'bonus', as: :bonus, type: String
+  field :'score', as: :score, type: Integer
+  field :'fromCamera', as: :from_camera, type: Boolean
 
 end
