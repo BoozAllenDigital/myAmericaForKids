@@ -8,5 +8,6 @@ class LocationsImpl
 
   def create_location(params)
     Locations.create(latitude: params['latitude'], longitude: params['longitude'], recarea_id: params['recareaId'], timestamp: Time.now, bonus: params['bonus'])
+    return 'Location added for user'
   end
 end

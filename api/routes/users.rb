@@ -16,9 +16,7 @@ module Sinatra
           end
 
           post_user = lambda do
-            users_impl.post_user(request.body.read)
-            body ''
-            status 200
+            body users_impl.post_user(request.body.read).to_json
           end
 
           app.get '/users', &get_users
