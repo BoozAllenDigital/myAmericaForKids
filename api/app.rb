@@ -19,7 +19,7 @@ class SimpleApp < Sinatra::Base
 
   configure do
     use Rack::CommonLogger, file
-    Mongoid.load!('./api/mongoid.yml')
+    Mongoid.load!('mongoid.yml')
     require 'mongoid'
   end
 
