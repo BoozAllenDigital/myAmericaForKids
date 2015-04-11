@@ -1,0 +1,28 @@
+<a ng-click="cancel()" class="close-reveal-modal"><i class="fa fa-times-circle fa-1x" style="color:black;"></i></a>
+
+<div class="">
+  <div class="">
+    <h3>Add a Technology to "{{occupation.Title}}" Occupation</h3>
+    <p>Lore ipsum dolor sit omet, consectetur adipiscing elit, sed do eiusmod etmpor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+
+  <form ng-submit="addTechnology()">
+    <div class="row">
+      <div class="small-12 columns">
+      <label>Category
+        <input type="text" ng-model="technology['category']">
+      </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <label>Name
+          <input type="text" ng-model="technology['technology_name']">
+        </label>
+      </div>
+    </div>
+  </form>
+
+    <button ng-click="addTechnology()" class="button ">Add to Job</button>
+    <button ng-click="cancel()" class="button alert">Cancel</button>
+</div>

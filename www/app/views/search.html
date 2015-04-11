@@ -1,0 +1,78 @@
+<div >
+  <div class="small-12 columns page-header" >
+    <div class="small-9 columns ">
+      Occupation Search
+    </div>
+    <div class="small-3 text-right columns ">
+      <ul class="breadcrumbs" style="margin:0px;">
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/search/">OCCUPATION SEARCH</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div id="searchTitle">
+
+  </div>
+  <div>
+
+  </div>
+  <br>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+  <form ng-submit="executeJobSearch()">
+  <div class=""  >
+
+    <div style="margin-top:80px;">
+    <div class="small-6 columns">
+      <input placeholder="search" label="search" id="searchInput" ng-model="searchInput" style="width:100%; height:36px;">
+    </div>
+    <div class="small-6 columns">
+      <button class="btn tiny" type="submit" style="margin-left:-30px; ">Search</button>
+    </div>
+      </div>
+  </div>
+  </form>
+</div>
+<br>
+<div ng-show="!searchResults">
+  Loading
+</div>
+<div ng-show="searchResults">
+  <div class="">
+    <div class="small-8 columns">
+      Search Results for "{{searchQuery}}"
+    </div>
+    <!--<div class="small-4 columns">-->
+      <!--<label>Sort By-->
+        <!--<select>-->
+          <!--<option value="husker">Ascending</option>-->
+          <!--<option value="starbuck">Descending</option>-->
+        <!--</select>-->
+      <!--</label>-->
+    <!--</div>-->
+  </div>
+<br>
+  <br>
+
+  <div class="">
+    <div class="small-12 columns">
+    <table style="width:100%;">
+      <thead>
+        <td style="font-weight: bold">CODE</td>
+        <td style="font-weight: bold">OCCUPATION</td>
+      </thead>
+      <tbody>
+        <tr ng-repeat="element in searchResults| orderBy: -Title">
+          <td>{{element['O*NET-SOC Code']}}</td>
+          <td><a ng-href="#/occupation/{{element['O*NET-SOC Code']}}">{{element.Title}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+</div>
