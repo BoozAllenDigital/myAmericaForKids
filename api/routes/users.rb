@@ -19,7 +19,12 @@ module Sinatra
             users_impl.post_user(JSON.parse(request.body.read)).to_json
           end
 
+          get_top_users_for_clan = lambda do
+            users_impl.get_top_users_for_clan(params['clan']).to_json(except: :_id)
+          end
+
           app.get '/users', &get_users
+          app.get '/users', &get_top_users_for_clan
           app.post '/users', &post_user
 
         end
