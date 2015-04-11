@@ -1,0 +1,37 @@
+<div class="row">
+  <div align="center">
+    <h2>Sign Up</h2>
+  </div>
+</div>
+
+<form ng-submit="signUp()">
+  <div class="small-6 small-offset-3 column authPanelStyle">
+  <div class="row">
+    Name
+  </div>
+  <div class="row">
+    <input id="name" name="name" ng-model="name" type="text">
+  </div>
+  <div class="row">
+    Email
+  </div>
+  <div class="row">
+    <input id="email" name="email" ng-model="email" type="text">
+  </div>
+  <div class="row">
+    Password
+  </div>
+  <div class="row">
+    <input type="password" id="password" name="password" ng-model="password">
+  </div>
+  <div class="row">
+    Repeat Password
+  </div>
+  <div class ="row">
+    <input type="password" id="repeatPassword" name="repeatPassword" ng-model="repeatPassword">
+  </div>
+  <div class="row" align="center">
+    <button class="btn" type="submit">Sign In</button>
+  </div>
+  </div>
+</form>

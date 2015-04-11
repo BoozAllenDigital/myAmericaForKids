@@ -1,0 +1,24 @@
+<div ng-controller="ProposedTasksCtrl">
+<div ng-repeat="task in proposedTasks" class="large-12 columns left">
+  <div class="small-3 columns">
+    <div class="button-group">
+      <button type="button" ng-click="voteUp(task._id)" class="button tiny">Yes</button>
+      <button type="button" ng-click="voteDown(task._id)" class="button tiny alert">No</button>
+    </div>
+  </div>
+  <div class="small-2 columns">
+    324 votes
+  </div>
+  <div class="small-7 columns">
+    {{ task.task_name }}
+  </div>
+</div>
+
+  <div class="large-12 columns left">
+    <div class="small-3 columns">
+    <button ng-click="showAddTaskModal()" type="button" class="button small">
+      Add a Task
+    </button>
+  </div>
+</div>
+</div>

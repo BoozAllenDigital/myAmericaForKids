@@ -1,0 +1,91 @@
+<div ng-show="allOpportunities">
+
+  <div class="row">
+
+    <div class="col-md-2 opp-page-aside">
+      <div id="BusStatus" ng-show="totalQuery['answer1'] == 'Small'">
+        <h4>Business Status</h4>
+        <div ng-repeat="setAside in setAsides">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="{{setAside}}" ng-model="smallFirm[setAside]" ng-change="smallFirmChanged(setAside)" value="option1" checked> {{setAside}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div id="Department">
+        <h4>Department</h4>
+        <div ng-repeat="department in allDepartments[allOpportunities.selectedMarket]">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="{{department}}" value="option1"  ng-model="agenciescheckbox[department]" ng-change="departmentsChanged(department)"  aria-label="..."> {{department}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="solicitation-status">
+        <h4>Solicitation Status</h4>
+        <div class="btn-group" data-toggle="buttons">
+          <button class="btn orange-btn" ng-click="toggleStatus(0)">
+            <input type="radio" name="options" id="Pre" autocomplete="off" checked> PRE
+          </button>
+          <button class="btn blue-btn" ng-click="toggleStatus(1)">
+            <input type="radio" name="options" id="Active" autocomplete="off"> ACTIVE
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9 jobs-content">
+      <div class="opp-page-title-wrapper">
+        <div class="opp-page-title">
+          <h1>Opportunities</h1>
+          <ul>
+            <li><button class="btn light-blue" ng-click="backToSearch()" tabindex="0">Previous</button></li>
+            <li><button class="btn blue" ng-click="reloadRoute()" tabindex="0">Start a New Search</button></li>
+          </ul>
+        </div>
+      </div>
+      <p class="opp-page-define">
+         Showing results for <span class="highlight">{{allOpportunities.selectedBusinessSize}}</span> companies seeking opportunities in the
+         <span class="highlight">{{allOpportunities.selectedMarket}}</span> that have a <span class="highlight">{{allOpportunities.selectedCapability}}</span> capability.
+      </p>
+
+    <div dir-paginate="each in allOpportunities.results | filter:filterAgency  | itemsPerPage: 10">
+        <div class="row opp-page-item-block blue" ng-class="(each.status==='Solicitation')?'row opp-page-item-block blue':'row-opp-page-item-block orange'">
+          <div class="col-md-9">
+            <h4>{{each.naicsName}}</h4>
+
+            <div class="row">
+              <div class="col-md-6">
+                <ul>
+                  <li><p><strong>Agency:</strong> {{each.agency}}</p></li>
+                  <li><p><strong>Office:</strong> {{each.office}}</p></li>
+                  <li><p><strong>Location:</strong> {{each.location}}</p></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul>
+                  <li><p><strong>Solicitation Number:</strong> {{each.solNumber}}</p>
+                  <li><p><strong>Response Date:</strong> {{each.date}}</p>
+                  <li><p><strong>Award Amount:</strong> ???</p>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="opp-page-item-checkbox">
+              <input type="checkbox" class="" value="option1"> Save Opportunity
+            </div>
+            <a href="{{each.link}}" target="_blank"><button class="btn">Details</button></a>
+          </div>
+        </div>
+      </div>
+
+      <dir-pagination-controls class="col-md-12 spacer"></dir-pagination-controls>
+
+    </div>
+
+  </div>
+
+</div>

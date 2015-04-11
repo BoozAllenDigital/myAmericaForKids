@@ -1,0 +1,110 @@
+
+<br>
+
+<div class="col-md-4 question-aside">
+    <!--<button class="btn" ng-click="nextQuestion()">Next</button>-->
+    <!--<button class="btn" ng-click="prevQuestion()">Back</button><br><br>-->
+
+   <!--  <div ng-show="previousSearchQuery">
+      You Previously searched opportunities for:
+      <br>
+      <div ng-repeat="query in previousSearchQuery">
+        Question: {{query.selectedOption}}
+      </div>
+    </div>
+
+    email: <input type="email" id="email" label="email" placeholder="example@bah.com" ng-model="email"><button ng-click="searchPrevEntries()" class="btn" id="searchPrevEntries">Go</button>
+-->
+<!--   <div id="accordion">
+    <h3>Query</h3>
+    <div> -->
+    <div id="firstQuestion">
+     <!--  <div class="well">
+
+      </div> -->
+
+      <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="border-left:10px black solid;border-top:0; border-radius: 5px; border-color:#1d7dc1;">
+                    <form method="get" class="form-horizontal">
+                      <div class="question-number"><p>1 of 3</p></div>
+
+                      <h3 class="m-t-none m-b">What size is your firm?</h3><h3 class="question-answer"> {{firstAnswer}}</h3>
+                      <div class="form-group">
+                          <div class="col-sm-12">
+                            <select ng-hide="showSecond" ng-change="firstAnswered(firstAnswer)" ng-options="item for item in firstOptions" ng-model="firstAnswer" class="form-control m-b" name="account" ></select>
+
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="showSecond">
+      <!-- <div class="well">
+        <p>What agency are you interested in?</p>
+        <select ng-change="secondAnswered(secondAnswer)" ng-options="item for item in secondOptions" ng-model="secondAnswer"></select>
+      </div> -->
+
+      <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+              <div class="ibox-content" style="border-left:10px black solid;border-top:0; border-radius: 5px; border-color:#1d7dc1;">
+                  <form method="get" class="form-horizontal">
+                    <div class="question-number"><p>2 of 3</p></div>
+                    <h3 class="m-t-none m-b">What agency are you interested in?</h3><h3 class="question-answer">{{secondAnswer}}</h3>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                          <select ng-hide="showThird" ng-change="secondAnswered(secondAnswer)" ng-options="item for item in secondOptions" ng-model="secondAnswer" class="form-control m-b" name="account"></select>
+                        </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div ng-show="showThird">
+<!--       <div class="well">
+        <p>What industry are you interested in?</p>
+        <select ng-change="thirdAnswered(thirdAnswer)" ng-options="item for item in thirdOptions" ng-model="thirdAnswer"></select>
+      </div> -->
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content" style="border-left:10px black solid;border-top:0; border-radius: 5px; border-color:#1d7dc1;">
+                  <form method="get" class="form-horizontal">
+                    <div class="question-number"><p>3 of 3</p></div>
+                    <h3 class="m-t-none m-b">What industry are you interested in?</h3><h3 class="question-answer">{{thirdAnswer}}</h3>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                         <select ng-hide="showLast" ng-change="thirdAnswered(thirdAnswer)" ng-options="item for item in thirdOptions" ng-model="thirdAnswer" class="form-control m-b" name="account"></select>
+                        </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+      <div>
+        </div>
+
+
+
+
+    <br> <br> <br>
+
+  <div class="col-md-4">
+    <div ng-repeat="answer in answers">{{answer}}</div>
+  </div>
+
+  <br><br><br>
+
+
+</div>
+
+<script>
+  $(function(){
+    $("#accordion").accordion({collapsible: true});
+  });
+</script>
