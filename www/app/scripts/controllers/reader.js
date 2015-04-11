@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the QR reader in wwwApp
  */
-angular.module('wwwApp')
+angular.module('myAmericaApp')
   .controller('ReaderCtrl', function ($scope) {
 
 
