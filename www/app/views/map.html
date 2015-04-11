@@ -2,11 +2,24 @@
 	.angular-mapbox-map {
 		position: relative;
 		top: 0px;
-		bottom: 0px;
+		height: 350px !important;
 		width: 100% !important;
+	}
+	.map-options {
+		padding-top: 20px;
+		height: 400px;
+	}
+
+	#loadingIndicator {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 1;
+		display: none;
 	}
 </style>
 <div>
+	<img id="loadingIndicator" src="/images/loader.gif">
 	<mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
 		<marker ng-repeat="recarea in recareas"
 			lat="{{recarea.RecAreaLatitude}}" 
@@ -15,4 +28,37 @@
 			<h1>{{recarea.RecAreaName}}</h1>
 		</marker>
 	</mapbox>
+
+	<div class="modal fade" id="recareaModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-title">
+					{{recarea.RecAreaName}}
+				</div>
+				<div class="modal-body">
+					{{recarea.RecAreaDescription}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="map-options">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-group">
+						<button class="btn btn-default" ng-click="locate()">Where Am I?</button>
+					</form>
+				</div>
+				<div class="col-md-12">
+					<form ng-submit="search()">
+						<div class="form-group">
+							<label>Search</label>
+							<input type="text" name="search" ng-model="query" ng-enter="search()">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

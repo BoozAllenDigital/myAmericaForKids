@@ -44,12 +44,6 @@
               <li><a ng-href="#/map">Map</a></li>
               <li><a ng-href="#/reader">QR Reader</a></li>
             </ul>
-
-          <form class="navbar-form" role="search">
-            <div class="input-group">
-              <input type="text" name="search">
-            </div>
-          </form>
         </div>
       </div>
     </div>
@@ -85,9 +79,11 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-mapbox/dist/angular-mapbox.js"></script>
-    <script src="bower_components/mapbox.js/mapbox.uncompressed.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+    <script src="bower_components/mapbox.js/mapbox.uncompressed.js"></script>
+    <script src="scripts/lib/flickrapi/flickrapi.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
