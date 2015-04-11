@@ -19,6 +19,10 @@ class UsersImpl
     Users.where(clan: params['clan'])
   end
 
+  def get_top_users_for_clan(clan)
+
+  end
+
   def post_user(params)
     if Users.where(user_name: params['userName']).exists?
       return 'User already exists'
