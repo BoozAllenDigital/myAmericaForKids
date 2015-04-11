@@ -3,7 +3,7 @@ development:
     default:
       database: mydb
       hosts:
-        - localhost:27017
+        - localhost:8081
 #      username: appUser
 #      password: P@$$1234
 production:
