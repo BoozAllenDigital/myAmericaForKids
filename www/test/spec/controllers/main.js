@@ -3,7 +3,11 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
+<<<<<<< HEAD
   beforeEach(module('myAmericaApp'));
+=======
+  beforeEach(module('oNetApp'));
+>>>>>>> api_dev
 
   var MainCtrl,
     scope;
