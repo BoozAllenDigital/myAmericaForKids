@@ -3,7 +3,8 @@ require 'mongoid'
 
 require_relative 'helpers'
 require_relative 'routes/base'
-
+require_relative 'routes/users'
+require_relative 'routes/locations'
 
 class SimpleApp < Sinatra::Base
 
@@ -23,7 +24,10 @@ class SimpleApp < Sinatra::Base
   end
 
   helpers Sinatra::SampleApp::Helpers
+
   # Register your routes here
+  register Sinatra::SampleApp::Routing::Users
+  register Sinatra::SampleApp::Routing::Locations
 
   before do
     enable_global_headers
