@@ -6,7 +6,15 @@ require_relative '../models/users'
 class UsersImpl
 
   def get_users(params)
-    Users.where(user_name: params['userName'])
+    if params['clan']
+      Users.where(clan: params['clan'])
+    else
+      Users.all
+    end
+  end
+
+  def get_users_by_clan(params)
+    Users.where(clan: params['clan'])
   end
 
   def post_user(params)
@@ -17,9 +25,8 @@ class UsersImpl
       user.userName = params['userName']
       user.name = params['name']
       user.clan = params['clan']
-      user.score = 0
       user.insert
-      return 'User added'
+      return 'User created'
     end
   end
 end

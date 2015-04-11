@@ -12,7 +12,7 @@ module Sinatra
           locations_impl = LocationsImpl.new
 
           get_locations = lambda do
-            locations_impl.get_user_locations(request.body.read).to_json
+            locations_impl.get_user_locations(request.body.read).to_json(except: :_id)
           end
 
           post_location = lambda do
