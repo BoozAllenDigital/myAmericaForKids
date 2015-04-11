@@ -28,6 +28,10 @@ angular
         templateUrl: 'views/map.html',
         controller: 'MapCtrl'
       })
+      .when('/reader', {
+        templateUrl: 'views/reader.html',
+        controller: 'ReaderCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
