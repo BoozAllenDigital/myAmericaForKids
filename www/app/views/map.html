@@ -1,4 +1,18 @@
+<style>
+	.angular-mapbox-map {
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		width: 100% !important;
+	}
+</style>
 <div>
-	<mapbox map-id="efwiz.ln2kghlc">
+	<mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
+		<marker ng-repeat="recarea in recareas"
+			lat="{{recarea.RecAreaLatitude}}" 
+			lng="{{recarea.RecAreaLongitude}}"
+			color="green" icon="park">
+			<h1>{{recarea.RecAreaName}}</h1>
+		</marker>
 	</mapbox>
 </div>

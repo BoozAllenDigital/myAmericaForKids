@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name wwwApp
+ * @name myAmericaApp
  * @description
- * # wwwApp
+ * # myAmericaApp
  *
  * Main module of the application.
  */
 angular
-  .module('wwwApp', [
+  .module('myAmericaApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
