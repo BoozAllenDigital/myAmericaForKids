@@ -9,7 +9,7 @@ module Sinatra
         def self.registered(app)
 
           get_users = lambda do
-            User.where(user_name: params['userName'])
+            Users.where(user_name: params['userName'])
           end
           app.get '/users', &get_users
 
