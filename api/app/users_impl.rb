@@ -30,7 +30,8 @@ class UsersImpl
       User.distinct(:clan).each do |clan_name|
         clan_doc = {}
         clan_doc['name'] = clan_name
-        users = User.where(clan: clan_name).desc(:score).limit(amount).without(:clan)
+        users = User.where(clan: clan_name).desc(:score).limit(amount).only(:userName, :firstName, :lastName, :score)
+        puts users
         clan_doc['topUsers'] = users
         clan_doc['score'] = users.sum(:score)
         clans << clan_doc
