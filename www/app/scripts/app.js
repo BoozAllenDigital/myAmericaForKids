@@ -24,9 +24,13 @@ angular
   })
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/map', {
+      .when('/', {
         templateUrl: 'views/map.html',
-        controller: 'MapCtrl'
+        // controller: 'MapCtrl'
+      })
+      .when('/park', {
+        templateUrl: 'views/park.html',
+        controller: 'ParkCtrl'
       })
       .when('/reader', {
         templateUrl: 'views/reader.html',
@@ -37,6 +41,6 @@ angular
         controller: 'AboutCtrl'
       })
       .otherwise({
-        redirectTo: '/map'
+        redirectTo: '/'
       });
   });
