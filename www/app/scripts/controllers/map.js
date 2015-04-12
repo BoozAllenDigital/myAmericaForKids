@@ -10,14 +10,72 @@
 angular.module('myAmericaApp')
   .controller('MapCtrl', function ($scope, mapboxService, recareas) {
   	mapboxService.init({ accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw'});
-  	recareas.get({query: 'yosemite'}, function(results) {
-  		recareas = [];
-  		results.RECDATA.forEach(function(result) {
+
+  	var flickr = new Flickr({api_key: '8262b0943aab5ff21e2ce2e129c74cb0'});
+
+  	function findPhotos(lat, lng) {
+    	var lat = 37.839126586;
+	  	var lng = -119.54084014;
+  		var radius = 5;
+
+	  	flickr.photos.search({
+	  		media: 'photos',
+	  		lat: lat,
+	  		lng: lng,
+	  		text: 'national park',
+	  		radius: radius
+	  	}, function(err, result) {
+	  		result.photos.photo.forEach(function(photo) {
+	  			var url = 'https://farm' + photo.farm 
+	  			+ '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
+	  			console.log(url);
+	  		})
+	  	});
+  	}
+
+
+  	function startLoading() {
+  		$('#loadingIndicator').show();
+  	}
+  	function endLoading() {
+  		$('#loadingIndicator').hide();
+  	}
+
+  	function loadRecareas(searchResults) {
+	  		var results = [];
+  		searchResults.RECDATA.forEach(function(result) {
   			if (result.RecAreaLatitude != null && result.RecAreaLatitude != "") {
-  				recareas.push(result);
+  				results.push(result);
   			}
   		});
-  		console.log(recareas);
-  		$scope.recareas = recareas;
-  	});
+  		$scope.recareas = results;
+  		mapboxService.fitMapToMarkers();
+
+  		endLoading();	
+  	}
+  	
+	function searchRecareas(query) {
+		recareas.get({query: query}, loadRecareas);
+	}
+
+	$scope.locate = function() {
+		startLoading();
+		navigator.geolocation.getCurrentPosition(function(geoposition) {
+			console.log(geoposition.coords);
+			recareas.get({
+				latitude: geoposition.coords.latitude,
+				longitude: geoposition.coords.longitude,
+				radius: 5
+			}, function(results) {
+				endLoading();
+				$scope.recarea = results.RECDATA[0];
+				$('#recareaModal').modal();
+			});
+		});
+	}
+
+  	$scope.search = function() {
+  		startLoading();
+  		searchRecareas($scope.query);
+  	}
   });
