@@ -1,8 +1,2 @@
-.vagrant
-Berksfile.lock
 .DS_Store
 .idea
-*.map
-.project
-api/FBOFullXML.xml
-bower.json
