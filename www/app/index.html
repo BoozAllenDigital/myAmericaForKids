@@ -128,16 +128,14 @@
 
             <!-- Add your site or application content here -->
             <div ng-controller="MapCtrl" ng-cloak>
-              <!-- style>
+              <style>
                 .angular-mapbox-map {
-                  position: absolute;
-                  top: 50px;
-                  height: 350px !important;
-                  width: 100% !important;
+                  min-height: 350px;
+                  height: 95% !important;
+                  width: 95% !important;
                   z-index: -1;
                 }
                 .map-options {
-                  padding-top: 20px;
                   height: 400px;
                 }
 
@@ -151,7 +149,7 @@
                   z-index: 1;
                   display: none;
                 }
-              </style -->
+              </style>
               <div>
                 <img id="loadingIndicator" src="/images/loader.gif">
                 <mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
@@ -185,11 +183,6 @@
       </div><!--/.container-->
     </div><!--/.page-container-->
 
-
-    <div class="footer">
-      <div class="container">
-      </div>
-    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
