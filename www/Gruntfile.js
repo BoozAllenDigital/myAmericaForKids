@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 // Generated on 2015-04-11 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
-=======
-// Generated on 2015-03-17 using generator-angular 0.11.1
-'use strict';
-
-
-
-//  # Globbing
->>>>>>> api_dev
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
@@ -49,17 +40,10 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-<<<<<<< HEAD
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-=======
-      // jsTest: {
-      //   files: ['test/spec/{,*/}*.js'],
-      //   tasks: ['newer:jshint:test', 'karma']
-      // },
->>>>>>> api_dev
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
@@ -82,16 +66,10 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-<<<<<<< HEAD
         port: 8080,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
-=======
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '0.0.0.0'
->>>>>>> api_dev
       },
       livereload: {
         options: {
@@ -203,7 +181,6 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//
       },
-<<<<<<< HEAD
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
@@ -220,24 +197,6 @@ module.exports = function (grunt) {
             }
           }
       },
-=======
-      // test: {
-      //   devDependencies: true,
-      //   src: '<%= karma.unit.configFile %>',
-      //   ignorePath:  /\.\.\//,
-      //   fileTypes:{
-      //     js: {
-      //       block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-      //         detect: {
-      //           js: /'(.*\.js)'/gi
-      //         },
-      //         replace: {
-      //           js: '\'{{filePath}}\','
-      //         }
-      //       }
-      //     }
-      // },
->>>>>>> api_dev
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
@@ -426,29 +385,11 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-<<<<<<< HEAD
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
         }]
       },
-=======
-          cwd: '<%= yeoman.app %>/bower_components/components-font-awesome/fonts',
-          dest: '<%= yeoman.dist %>/bower_components/components-font-awesome/fonts',
-          src: [ '**' ]
-        }, { 
-          expand: true,
-          cwd: '<%= yeoman.app %>/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
-          dest: '<%= yeoman.dist %>/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
-          src: [ '**' ]
-        }, { 
-          expand: true, 
-          cwd: '<%= yeoman.app %>/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
-          dest: '<%= yeoman.dist %>/bower_components/bootstrap/dist/fonts',
-          src: [ '**' ]
-       }]
-       },
->>>>>>> api_dev
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -473,21 +414,12 @@ module.exports = function (grunt) {
     },
 
     // Test settings
-<<<<<<< HEAD
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
     }
-=======
-    // karma: {
-    //   unit: {
-    //     configFile: 'test/karma.conf.js',
-    //     singleRun: true
-    //   }
-    // }
->>>>>>> api_dev
   });
 
 
@@ -516,13 +448,8 @@ module.exports = function (grunt) {
     'wiredep',
     'concurrent:test',
     'autoprefixer',
-<<<<<<< HEAD
     'connect:test',
     'karma'
-=======
-    'connect:test'
-    // 'karma'
->>>>>>> api_dev
   ]);
 
   grunt.registerTask('build', [

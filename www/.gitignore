@@ -1,15 +1,5 @@
-<<<<<<< HEAD
 node_modules/
 bower_components/
 dist
 .tmp
 .sass-cache
-=======
-node_modules
-dist
-.tmp
-.sass-cache
-bower_components
-bower.json
-Dockerfile
->>>>>>> api_dev
