@@ -5,7 +5,11 @@ class LocationsImpl
   SECONDS_IN_DAY = 86400
 
   def get_user_locations(userName)
-    Location.where(user_name: userName)
+    if userName
+      Location.where(user_name: userName)
+    else
+      Location.all
+    end
   end
 
   def create_location(params)
