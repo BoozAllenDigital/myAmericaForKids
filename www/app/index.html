@@ -74,7 +74,7 @@
                 <input ng-model="userName" placeholder="Username" ng-enter="logIn(userName)">
               </li>
               <li ng-show="loggedIn"><div class="userName">Welcome, {{ user.firstName }}!</div></li>
-              <li ng-show="loggedIn">
+              <li ng-show="loggedIn" style="text-align: center">
                 <button ng-click="logOut()" class="btn btn-default logout-button">Log out</button>
               </li>
               <li><img src="images/profile picture.png" class="profilePic"/></li>
