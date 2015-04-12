@@ -24,13 +24,13 @@ class UsersImpl
     amount ||= quantity
     amount ||= 10
     if clan
-      User.where(clan: clan).desc(:score).limit(amount)
+      User.where(clan: clan).limit(amount).desc(:score).without(:clan)
     else
       clans = []
       User.distinct(:clan).each do |clan_name|
         clan_doc = {}
         clan_doc['name'] = clan_name
-        users = User.where(clan: clan_name).desc(:score).limit(amount).only(:userName, :firstName, :lastName, :score)
+        users = User.where(clan: clan_name).limit(amount).desc(:score).without(:clan)
         clan_doc['topUsers'] = users
         clan_doc['score'] = users.sum(:score)
         clans << clan_doc
