@@ -158,28 +158,6 @@
 
             <!-- Add your site or application content here -->
             <div ng-controller="MapCtrl" ng-cloak>
-              <style>
-                .angular-mapbox-map {
-                  min-height: 350px;
-                  height: 95% !important;
-                  width: 95% !important;
-                  z-index: -1;
-                }
-                .map-options {
-                  height: 400px;
-                }
-
-                #loadingIndicator {
-                  position: absolute;
-                  top: 200px;
-                  left: 50%;
-                  margin-left: -25px;
-                  height: 50px;
-                  width: 50px;
-                  z-index: 1;
-                  display: none;
-                }
-              </style>
               <div>
                 <img id="loadingIndicator" src="/images/loader.gif">
                 <mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
@@ -191,19 +169,9 @@
                   </marker>
                 </mapbox>
 
-                <div class="modal fade" id="recareaModal" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-title">
-                        {{recarea.RecAreaName}}
-                      </div>
-                      <div class="modal-body">
-                        {{recarea.RecAreaDescription}}
-                      </div>
-                    </div>
-                  </div>
+                <div class="btn-group geolocation-button">
+                  <button class="btn btn-default">Where Am I?</button>
                 </div>
-
               </div>
               <div ng-view=""></div>
             </div>
@@ -231,7 +199,6 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -242,7 +209,6 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-mapbox/dist/angular-mapbox.js"></script>
     <script src="bower_components/mapbox.js/mapbox.js"></script>
-
     <!-- endbower -->
     <!-- endbuild -->
 

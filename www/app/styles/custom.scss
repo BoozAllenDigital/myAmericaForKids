@@ -15,6 +15,12 @@
   z-index: -1;
 }
 
+.geolocation-button {
+	position: absolute;
+	top: 75px;
+	right: 25px;
+}
+
 .map-action-buttons {
 	position: absolute;
 	left: 50%;
@@ -27,7 +33,7 @@ $dark-blue: #2c3e50;
 .bottom-panel {
 	position: absolute;
 	background: white;
-	top: 300px;
+	bottom: 0px;
 	width: 100%;
 
 	.title-row {
