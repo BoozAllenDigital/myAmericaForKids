@@ -1,16 +1,16 @@
-require_relative '../models/locations'
+require_relative '../models/location'
 
 class LocationsImpl
 
   SECONDS_IN_DAY = 86400
 
   def get_user_locations(userName)
-    Locations.where(user_name: userName)
+    Location.where(user_name: userName)
   end
 
   def create_location(params)
     now_seconds = Time.now.to_i
-    prev_location = Locations.where(userName: params['userName'], recarea_id: params['recAreaId']).first
+    prev_location = Location.where(userName: params['userName'], recarea_id: params['recAreaId']).first
     if prev_location[:user_name].nil?
       return 'The specified user does not exist'
     elsif prev_location
@@ -21,7 +21,7 @@ class LocationsImpl
       end
     end
 
-    location = Locations.new
+    location = Location.new
     location.userName = params['userName']
     location.latitude = params['latitude']
     location.longitude = params['longitude']
@@ -31,8 +31,9 @@ class LocationsImpl
     location.fromCamera = params['fromCamera']
     location.insert
 
-    user = Users.where(userName: params['userName'])
+    user = User.where(userName: params['userName'])
     user.update_all(score: (user[0][:score] + params['score']))
+
     return 'Location added for user'
   end
 end

@@ -1,6 +1,6 @@
 require 'mongoid'
 
-class Users
+class User
   include Mongoid::Document
 
   store_in collection: 'Users', database: 'mydb', session: 'default'
