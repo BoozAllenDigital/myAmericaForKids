@@ -1,3 +1,33 @@
 .navbar {
 	margin-bottom: 0px;
 }
+
+.angular-mapbox-map {
+  position: absolute;
+  top: 50px;
+  height: 350px !important;
+  width: 100% !important;
+  z-index: -1;
+}
+
+.bottom-panel {
+	position: absolute;
+	background: white;
+	bottom: 0px;
+	width: 100%;
+
+	.h1 {
+		font-size: 15px;
+	}
+}
+
+#loadingIndicator {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -25px;
+  height: 50px;
+  width: 50px;
+  z-index: 1;
+  display: none;
+}
