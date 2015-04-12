@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'mongoid'
-require_relative '../models/locations'
+require_relative '../models/location'
 require_relative '../app/locations_impl'
 
 module Sinatra

@@ -1,6 +1,6 @@
 require 'mongoid'
 
-class Locations
+class Location
   include Mongoid::Document
 
   store_in collection: 'Locations', database: 'mydb', session: 'default'

@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'mongoid'
-require_relative '../models/users'
+require_relative '../models/user'
 require_relative '../app/users_impl'
 
 module Sinatra
