@@ -1,3 +1,4 @@
+require 'mongoid'
 require_relative '../models/location'
 
 class LocationsImpl
@@ -14,14 +15,18 @@ class LocationsImpl
 
   def create_location(params)
     now_seconds = Time.now.to_i
-    prev_location = Location.where(userName: params['userName'], recarea_id: params['recAreaId']).first
-    if prev_location[:user_name].nil?
+    user = User.where(user_name: params['userName']).first
+
+    if user.nil?
       return 'The specified user does not exist'
-    elsif prev_location
-      prev_location_seconds = prev_location[:timestamp].to_i
-      if (now_seconds - prev_location_seconds) < SECONDS_IN_DAY
-        return 'It has been less than one day since checking in at this recreation area. Please try to check in after ' +
-            (now_seconds - prev_location_seconds).to_s + ' seconds, or visit a different area in the meantime.'
+    else
+      prev_location = Location.where(user_name: params['userName'], recarea_id: params['recAreaId']).first
+      if prev_location
+        prev_location_seconds = prev_location[:timestamp].to_i
+        if (now_seconds - prev_location_seconds) < SECONDS_IN_DAY
+          return 'It has been less than one day since checking in at this recreation area. Please try to check in after ' +
+              (now_seconds - prev_location_seconds).to_s + ' seconds, or visit a different area in the meantime.'
+        end
       end
     end
 
@@ -35,8 +40,9 @@ class LocationsImpl
     location.fromCamera = params['fromCamera']
     location.insert
 
-    user = User.where(userName: params['userName'])
-    user.update_all(score: (user[0][:score] + params['score']))
+    user = User.where(userName: params['userName']).first
+    puts user.to_json
+    user.update_attribute(:score, (user[:score] + params['score']))
 
     return 'Location added for user'
   end

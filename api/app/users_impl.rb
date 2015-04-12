@@ -23,7 +23,6 @@ class UsersImpl
   def get_top_users_for_clan(clan, quantity)
     amount ||= quantity
     amount ||= 10
-    puts amount
     if clan
       User.where(clan: clan).desc(:score).limit(amount)
     else
