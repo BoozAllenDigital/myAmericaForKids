@@ -1,17 +1,41 @@
 require 'mongoid'
 require_relative '../models/location'
-
+require_relative '../models/user'
 class LocationsImpl
 
   SECONDS_IN_DAY = 86400
 
   def get_user_locations(userName)
+
+    user_location_with_clan = []
     if userName
-      Location.where(user_name: userName)
+      user = User.only(:clan).where(userName: userName).first
+      user_location = Location.where(user_name: userName)
+      #set clan to locations
+      user_location.each do |location|
+        location[:clan] = user[:clan]
+        user_location_with_clan << location
+      end
+      return user_location_with_clan
     else
-      Location.all
+      #get username and clan from users collection to build a lookup hash
+      users = User.only(:userName, :clan).all
+      user_clan_hash = {}
+      users.each do |user|
+        user_clan_hash[user[:user_name]] = user[:clan]
+      end
+
+      #set clan to locations
+      user_location = Location.all
+      user_location.each do |location|
+        location_user_name = location[:user_name]
+          location[:clan] = user_clan_hash[location_user_name]
+          user_location_with_clan << location
+      end
+      return user_location_with_clan
     end
   end
+
 
   def create_location(params)
     now_seconds = Time.now.to_i
