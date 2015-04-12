@@ -1,37 +1,58 @@
 require 'mongoid'
 require 'sinatra'
 
-require_relative '../models/users'
+require_relative '../models/user'
+require_relative '../models/clan'
 
 class UsersImpl
 
   def get_users(userName, clan)
     if clan
-      Users.where(clan: clan)
+      User.where(clan: clan)
     elsif userName
-      Users.where(userName: userName)
+      User.where(userName: userName)
     else
-      Users.all
+      User.all
     end
   end
 
   def get_users_by_clan(params)
-    Users.where(clan: params['clan'])
+    User.where(clan: params['clan'])
   end
 
-  def get_top_users_for_clan(clan)
-
+  def get_top_users_for_clan(clan, quantity)
+    amount ||= quantity
+    amount ||= 10
+    puts amount
+    if clan
+      User.where(clan: clan).desc(:score).limit(amount)
+    else
+      clans = []
+      User.distinct(:clan).each do |clan_name|
+        clan_doc = {}
+        clan_doc['name'] = clan_name
+        users = User.where(clan: clan_name).desc(:score).limit(amount).without(:clan)
+        clan_doc['topUsers'] = users
+        clan_doc['score'] = users.sum(:score)
+        clans << clan_doc
+      end
+    end
+    clans_parent = {}
+    clans_parent['clans'] = clans
+    return clans_parent
   end
 
   def post_user(params)
-    if Users.where(user_name: params['userName']).exists?
+    puts params['userName']
+    if User.where(user_name: params['userName']).exists?
       return 'User already exists'
     else
-      user = Users.new
+      user = User.new
       user.userName = params['userName']
       user.firstName = params['firstName']
       user.lastName = params['lastName']
       user.clan = params['clan']
+      user.score = 0
       user.insert
       return 'User created'
     end
