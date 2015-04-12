@@ -1,31 +1,9 @@
-<style>
-	.angular-mapbox-map {
-		position: relative;
-		top: 0px;
-		height: 350px !important;
-		width: 100% !important;
-	}
-	.map-options {
-		padding-top: 20px;
-		height: 400px;
-	}
 
-	#loadingIndicator {
-		position: absolute;
-		top: 200px;
-		left: 50%;
-		margin-left: -25px;
-		height: 50px;
-		width: 50px;
-		z-index: 1;
-		display: none;
-	}
-</style>
 <div>
 	<img id="loadingIndicator" src="/images/loader.gif">
 	<mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
 		<marker ng-repeat="recarea in recareas"
-			lat="{{recarea.RecAreaLatitude}}" 
+			lat="{{recarea.RecAreaLatitude}}"
 			lng="{{recarea.RecAreaLongitude}}"
 			color="green" icon="park">
 			<h1>{{recarea.RecAreaName}}</h1>
