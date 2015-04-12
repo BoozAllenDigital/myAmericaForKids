@@ -97,3 +97,139 @@ $dark-blue: #2c3e50;
   z-index: 1;
   display: none;
 }
+
+body {
+  padding-top: 50px;
+  background: #212F3E;
+}
+.text-center {
+  padding-top: 20px;
+}
+.col-xs-12 {
+  background-color: #fff;
+}
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0px;
+  border-style: none;
+  margin: 2px;
+}
+
+/* collapsed sidebar styles */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -41.6%;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -41.6%;
+  }
+  .row-offcanvas-right.active {
+    right: 41.6%;
+  }
+  .row-offcanvas-left.active {
+    left: 41.6%;
+  }
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 41.6%;
+  }
+  #sidebar {
+    padding-top:0;
+  }
+  .uploadButton {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 0px;
+    border-color: transparent;
+  }
+  .scanBonus {
+    background: #28384B;
+    padding: 10px 15px;
+    float: left;
+    text-align: left;
+    width: 100%;
+  }
+  .menuItem {
+    background: #28384B;
+    border-style: none;
+    border-width: 0px;
+  }
+  .scanBonus:hover {
+    color: #FFF;
+    text-decoration: none;
+    background: #80C476;
+  }
+  .navbarOr {
+    background: #323232;
+    color: #FFF;
+  }
+  a {
+    color: #FFF;
+  }
+  .nav > li > a:hover, .nav > li > a:focus  {
+    color: #FFF;
+    text-decoration: none;
+    background: #80C476;
+  }
+  .userName {
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .profilePic {
+    max-width: 50%;
+    max-height: 50%;
+    margin: 0 25%;
+    border-radius: 50% 50%;
+  }
+  .sidebarIcon {
+    max-height: 1.5em;
+    vertical-align: text-top;
+    padding-right: 1em;
+  }
+  .navbar-default .navbar-toggle {
+    border: 0px;
+    border-style: none;
+  }
+  .navbar-default .navbar-brand {
+    color: #FFF;
+  }
+  .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #80C476;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+  }
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: transparent;
+  }
+  a:focus {
+    outline: none;
+  }
+  .teamName {
+    color: #fff;
+    text-align: center;
+  }
+  .pointRank {
+    color: #80C476;
+    text-align: center;
+  }
+}
