@@ -34,7 +34,7 @@ module Sinatra
           end
 
           app.get '/users', &get_users
-          app.get '/users/leaderboard', &get_top_users_for_clan
+          app.get '/users/leaderboards', &get_top_users_for_clan
           app.post '/users', &post_user
 
         end
