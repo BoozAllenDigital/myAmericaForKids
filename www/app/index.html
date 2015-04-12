@@ -89,6 +89,10 @@
           text-align: left;
           width: 100%;
         }
+        .menuItem {
+          background: #28384B;
+          margin: 2px;
+        }
         .scanBonus:hover {
           text-decoration: none;
           background: #EEE;
@@ -140,8 +144,9 @@
         <div class="row row-offcanvas row-offcanvas-left">
 
           <!-- sidebar -->
-          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" style="background: #212F3E;" id="sidebar" role="navigation">
             <ul class="nav">
+              <li><div style="width: 95%; height: 100px; background: #0040D0;" /></li>
               <li class="active"><a href="#">Current Conquests</a></li>
               <li><a href="#">Future Conquests</a></li>
               <li><a href="#">Leaderboard</a></li>
@@ -154,7 +159,7 @@
           </div>
 
           <!-- main area -->
-          <div class="col-xs-12 col-sm-9">
+          <div class="col-xs-12 col-sm-9 main-area">
 
             <!-- Add your site or application content here -->
             <div ng-controller="MapCtrl" ng-cloak>
