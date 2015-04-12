@@ -1,9 +1,11 @@
 require 'mongoid'
+require_relative 'user'
 
 class Location
   include Mongoid::Document
 
   store_in collection: 'Locations', database: 'mydb', session: 'default'
+  has_and_belongs_to_many :users
 
   field :'userName', as: :user_name, type: String
   field :'latitude', as: :latitude, type: String

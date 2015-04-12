@@ -42,7 +42,6 @@ class UsersImpl
   end
 
   def post_user(params)
-    puts params['userName']
     if User.where(user_name: params['userName']).exists?
       return 'User already exists'
     else
