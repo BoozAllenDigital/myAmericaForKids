@@ -9,9 +9,9 @@
 
 .angular-mapbox-map {
   position: absolute;
-  top: 50px;
-  height: 350px !important;
-  width: 100% !important;
+  min-height: 350px !important;
+  height: 95%;
+  width: 95% !important;
   z-index: -1;
 }
 
@@ -53,7 +53,7 @@ $dark-blue: #2c3e50;
 
 		h1 {
 			font-size: 18px;
-		}	
+		}
 	}
 
 	.detail-row {
