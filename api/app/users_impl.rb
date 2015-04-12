@@ -19,11 +19,12 @@ class UsersImpl
     Users.where(clan: params['clan'])
   end
 
-  def get_top_users_for_clan(clan)
-
+  def get_top_users_for_clan(clan, quantity)
+    Users.where(clan: clan).desc(:score).limit(quantity)
   end
 
   def post_user(params)
+    puts params['userName']
     if Users.where(user_name: params['userName']).exists?
       return 'User already exists'
     else
@@ -32,6 +33,7 @@ class UsersImpl
       user.firstName = params['firstName']
       user.lastName = params['lastName']
       user.clan = params['clan']
+      user.score = 0
       user.insert
       return 'User created'
     end

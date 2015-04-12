@@ -11,7 +11,9 @@ class LocationsImpl
   def create_location(params)
     now_seconds = Time.now.to_i
     prev_location = Locations.where(userName: params['userName'], recarea_id: params['recAreaId']).first
-    if prev_location
+    if prev_location[:user_name].nil?
+      return 'The specified user does not exist'
+    elsif prev_location
       prev_location_seconds = prev_location[:timestamp].to_i
       if (now_seconds - prev_location_seconds) < SECONDS_IN_DAY
         return 'It has been less than one day since checking in at this recreation area. Please try to check in after ' +
@@ -28,6 +30,9 @@ class LocationsImpl
     location.score = params['score'] || 1
     location.fromCamera = params['fromCamera']
     location.insert
+
+    user = Users.where(userName: params['userName'])
+    user.update_all(score: (user[0][:score] + params['score']))
     return 'Location added for user'
   end
 end
