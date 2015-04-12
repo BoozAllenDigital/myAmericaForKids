@@ -175,6 +175,7 @@ body {
   }
   .navbarOr {
     background: #323232;
+    color: #FFF;
   }
   a {
     color: #FFF;
@@ -183,5 +184,48 @@ body {
     color: #FFF;
     text-decoration: none;
     background: #80C476;
+  }
+  .userName {
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .profilePic {
+    max-width: 50%;
+    max-height: 50%;
+    margin: 0 25%;
+    border-radius: 50% 50%;
+  }
+  .sidebarIcon {
+    max-height: 1.5em;
+    vertical-align: text-top;
+    padding-right: 1em;
+  }
+  .navbar-default .navbar-toggle {
+    border: 0px;
+    border-style: none;
+  }
+  .navbar-default .navbar-brand {
+    color: #FFF;
+  }
+  .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #80C476;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+  }
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: transparent;
+  }
+  a:focus {
+    outline: none;
+  }
+  .teamName {
+    color: #fff;
+    text-align: center;
+  }
+  .pointRank {
+    color: #80C476;
+    text-align: center;
   }
 }
