@@ -19,6 +19,16 @@
 	position: absolute;
 	top: 75px;
 	right: 25px;
+	width: 50px;
+	height: 50px;
+
+	button {
+		padding: 3px;
+		img {
+			width: 25px;
+			height: 25px;
+		}
+	}
 }
 
 .map-action-buttons {
@@ -33,7 +43,7 @@ $dark-blue: #2c3e50;
 .bottom-panel {
 	position: absolute;
 	background: white;
-	bottom: 0px;
+	top: 300px;
 	width: 100%;
 
 	.title-row {
@@ -48,7 +58,26 @@ $dark-blue: #2c3e50;
 
 	.detail-row {
 		padding-left: 10px;
-		min-height: 150px;
+	}
+
+	.photo-row {
+
+		.slick-carousel {
+			.slick-prev:before, .slick-next:before {
+				color: black !important;
+			}
+		}
+		.carousel-photo {
+			height: 75px;
+			width: 100px !important;
+			padding-right: 5px;
+			padding-left: 5px;
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
 	}
 
 

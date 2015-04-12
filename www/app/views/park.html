@@ -9,4 +9,11 @@
 			<p> {{ recarea.RecAreaDescription }} </p>
 		</div>
 	</div>
+	<div class="row photo-row">
+		<div id="photoCarousel">
+			<div ng-repeat="photo in photos" class="carousel-photo">
+				<img ng-src="{{photo}}">
+			</div>
+		</div>
+	</div>
 </div>
