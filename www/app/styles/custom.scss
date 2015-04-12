@@ -27,16 +27,22 @@ $dark-blue: #2c3e50;
 .bottom-panel {
 	position: absolute;
 	background: white;
-	bottom: 0px;
+	top: 300px;
 	width: 100%;
 
 	.title-row {
 		color: white;
 		background-color: $dark-blue;
+		padding-left: 10px;
 
 		h1 {
 			font-size: 18px;
 		}	
+	}
+
+	.detail-row {
+		padding-left: 10px;
+		min-height: 150px;
 	}
 
 

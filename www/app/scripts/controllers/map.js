@@ -41,9 +41,9 @@ angular.module('myAmericaApp')
   		$('#loadingIndicator').hide();
   	}
 
-  	function loadRecareas(searchResults) {
-	  		var results = [];
-  		searchResults.RECDATA.forEach(function(result) {
+  	function loadRecareas(recareas) {
+	  	var results = [];
+  		recareas.forEach(function(result) {
   			if (result.RecAreaLatitude != null && result.RecAreaLatitude != "") {
   				results.push(result);
   			}
@@ -67,9 +67,8 @@ angular.module('myAmericaApp')
 				longitude: geoposition.coords.longitude,
 				radius: 5
 			}, function(results) {
-				endLoading();
 				var recarea = results.RECDATA[0];
-
+				loadRecareas([ recarea ]);
 				$location.path('/park/' + recarea.RecAreaID);
 			});
 		});
