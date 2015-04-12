@@ -8,10 +8,32 @@
  * Controller of the myAmericaApp
  */
 angular.module('myAmericaApp')
-  .controller('MapCtrl', function ($scope, mapboxService, recareas, $location, $timeout) {
+  .controller('MapCtrl', function ($scope, $rootScope, $cookies,
+    mapboxService, recareas, locations, users, 
+    $location, $timeout, $routeParams) {
   	mapboxService.init({ 
   		accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw',
   	});
+
+    $scope.$on('$routeChangeSuccess', function() {
+      if ($routeParams.param == 'user' && $cookies['userName']) {
+        getForUser($cookies['userName']);
+      }    
+    });
+
+
+    var styles = {
+      normal: {
+        color: 'green',
+        icon: 'park'
+      },
+      wolf: {
+        color: 'blue'
+      },
+      bear: {
+        color: 'red'
+      }
+    };
 
   	$timeout(function() {
 	  	var map = mapboxService.getMapInstances()[0];
@@ -24,41 +46,52 @@ angular.module('myAmericaApp')
   		$('#loadingIndicator').hide();
   	}
 
-  	function loadRecareas(recareas) {
-	  	var results = [];
-  		recareas.forEach(function(result) {
-  			if (result.RecAreaLatitude != null && result.RecAreaLatitude != "") {
-  				results.push(result);
+  	function addMarkers(locations, type) {
+      if (!type) {
+        type = 'normal';
+      }
+  		locations.forEach(function(location) {
+  			if (location.latitude != null && location.latitude != "") {
+          marker.location = location;
+          marker.color = styles[type].color;
+          marker.icon = styles[type].icon;
+
+          if (!marker.location.recArea) {
+            recarea.get({id: marker.location.recAreaId}, function(recArea) {
+              marker.location.recArea = recArea;
+            });
+          }
+
+  				$scope.markers.push(marker);
   			}
   		});
-  		$scope.recareas = results;
-  		mapboxService.fitMapToMarkers();
-
-  		endLoading();	
   	}
-  	
-	function searchRecareas(query) {
-		recareas.get({query: query}, loadRecareas);
-	}
 
 	$scope.locate = function() {
 		startLoading();
+
 		navigator.geolocation.getCurrentPosition(function(geoposition) {
-			console.log(geoposition.coords);
 			recareas.get({
 				latitude: geoposition.coords.latitude,
 				longitude: geoposition.coords.longitude,
 				radius: 5
 			}, function(results) {
 				var recarea = results.RECDATA[0];
-				loadRecareas([ recarea ]);
+        var location = { 
+          recArea: recarea,
+          latitude: recarea.RecAreaLatitude,
+          longitude: recarea.RecAreaLongitude
+        };
+				addMarkers([ location ]);
 				$location.path('/park/' + recarea.RecAreaID);
 			});
 		});
 	}
 
-  	$scope.search = function() {
-  		startLoading();
-  		searchRecareas($scope.query);
-  	}
+  function getForUser(userName) {
+    locations.query({userName: userName}, function(results) {
+      addMarkers(location, $rootScope.user.clan);
+    });
+  }
+
   });

@@ -23,13 +23,15 @@ angular
     KEY: '718A093253714004B839308AE31E7AD8'
   })
   .constant('SERVER_API', {
-    HOST: '54.175.95.225:8080'
+    HOST: 'http://54.175.95.225:8080'
   })
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/map.html',
-        // controller: 'MapCtrl'
+      .when('/map', {
+        controller: 'MapCtrl'
+      })
+      .when('/map/:param', {
+        controller: 'MapCtrl'
       })
       .when('/park/:parkId', {
         templateUrl: 'views/park.html',
@@ -44,6 +46,6 @@ angular
         controller: 'AboutCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/map'
       });
   });

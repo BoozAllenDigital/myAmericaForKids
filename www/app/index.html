@@ -146,9 +146,15 @@
         <div class="row row-offcanvas row-offcanvas-left">
 
           <!-- sidebar -->
-          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div ng-controller="UserCtrl" class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
-              <li><div class="userName">User Name</div></li>
+              <li ng-show="!loggedIn">
+                <input ng-model="userName" placeholder="Username" ng-enter="logIn(userName)">
+              </li>
+              <li ng-show="loggedIn"><div class="userName">Welcome, {{ user.firstName }}!</div></li>
+              <li ng-show="loggedIn">
+                <button ng-click="logOut()" class="btn btn-default">Log out</button>
+              </li>
               <li><img src="images/profile picture.png" style="max-width:50%; max-height:50%;"/></li>
               <li class="active"><a href="#">Current Conquests</a></li>
               <li><a href="#">Future Conquests</a></li>
@@ -169,11 +175,11 @@
               <div>
                 <img id="loadingIndicator" src="/images/loader.gif">
                 <mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
-                  <marker ng-repeat="recarea in recareas"
-                          lat="{{recarea.RecAreaLatitude}}"
-                          lng="{{recarea.RecAreaLongitude}}"
-                          color="green" icon="park">
-                    <h1>{{recarea.RecAreaName}}</h1>
+                  <marker ng-repeat="marker in markers"
+                          lat="{{marker.latitude}}"
+                          lng="{{marker.longitude}}"
+                          color="{{marker.color}}" icon="{{marker.icon}}">
+                    <h1>{{marker.location.recArea.RecAreaName}}</h1>
                   </marker>
                 </mapbox>
 
@@ -231,6 +237,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/map.js"></script>
         <script src="scripts/controllers/park.js"></script>
+        <script src="scripts/controllers/user.js"></script>
         <script src="scripts/controllers/reader.js"></script>
 
         <script src="scripts/services/recareas.js"></script>
@@ -238,6 +245,8 @@
         <script src="scripts/services/users.js"></script>
         <script src="scripts/services/leaderboard.js"></script>
         <script src="scripts/services/locations.js"></script>
+
+        <script src="scripts/directives/ngEnter.js"></script>
         <!-- endbuild -->
 </body>
 </html>
