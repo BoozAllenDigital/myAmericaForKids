@@ -8,9 +8,14 @@
  * Controller of the myAmericaApp
  */
 angular.module('myAmericaApp')
-  .controller('MapCtrl', function ($scope, mapboxService, recareas, $location) {
-  	mapboxService.init({ accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw'});
+  .controller('MapCtrl', function ($scope, mapboxService, recareas, $location, $timeout) {
+  	mapboxService.init({ 
+  		accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw',
+  	});
 
+  	$timeout(function() {
+	  	var map = mapboxService.getMapInstances()[0];
+  	}, 100);
   	var flickr = new Flickr({api_key: '8262b0943aab5ff21e2ce2e129c74cb0'});
 
   	function findPhotos(lat, lng) {
