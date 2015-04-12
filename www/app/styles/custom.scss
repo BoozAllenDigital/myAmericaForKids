@@ -2,6 +2,11 @@
 	margin-bottom: 0px;
 }
 
+.header {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .angular-mapbox-map {
   position: absolute;
   top: 50px;
@@ -10,15 +15,31 @@
   z-index: -1;
 }
 
+.map-action-buttons {
+	position: absolute;
+	left: 50%;
+	margin-left: -125px;
+	top: 75px;
+}
+
+$dark-blue: #2c3e50;
+
 .bottom-panel {
 	position: absolute;
 	background: white;
 	bottom: 0px;
 	width: 100%;
 
-	.h1 {
-		font-size: 15px;
+	.title-row {
+		color: white;
+		background-color: $dark-blue;
+
+		h1 {
+			font-size: 18px;
+		}	
 	}
+
+
 }
 
 #loadingIndicator {
