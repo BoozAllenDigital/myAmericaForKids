@@ -8,7 +8,7 @@
  * Controller of the myAmericaApp
  */
 angular.module('myAmericaApp')
-  .controller('MapCtrl', function ($scope, mapboxService, recareas) {
+  .controller('MapCtrl', function ($scope, mapboxService, recareas, $location) {
   	mapboxService.init({ accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw'});
 
   	var flickr = new Flickr({api_key: '8262b0943aab5ff21e2ce2e129c74cb0'});
@@ -68,8 +68,9 @@ angular.module('myAmericaApp')
 				radius: 5
 			}, function(results) {
 				endLoading();
-				$scope.recarea = results.RECDATA[0];
-				$('#recareaModal').modal();
+				var recarea = results.RECDATA[0];
+
+				$location.path('/park/' + recarea.RecAreaID);
 			});
 		});
 	}

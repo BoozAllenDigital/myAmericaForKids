@@ -28,7 +28,7 @@ angular
         templateUrl: 'views/map.html',
         // controller: 'MapCtrl'
       })
-      .when('/park', {
+      .when('/park/:parkId', {
         templateUrl: 'views/park.html',
         controller: 'ParkCtrl'
       })
