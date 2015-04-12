@@ -6,7 +6,6 @@ angular.module('myAmericaApp').controller('UserCtrl', function($scope, $rootScop
 	}
 
 	function logIn(userName) {
-		console.log('logging in');
 		users.query({userName: userName}, function(users) {
 			if (users.length > 0) {
 				$rootScope.loggedIn = true;

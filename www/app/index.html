@@ -71,12 +71,12 @@
               </li>
               <li ng-show="loggedIn"><div class="userName">Welcome, {{ user.firstName }}!</div></li>
               <li ng-show="loggedIn">
-                <button ng-click="logOut()" class="btn btn-default">Log out</button>
+                <button ng-click="logOut()" class="btn btn-default logout-button">Log out</button>
               </li>
               <li><img src="images/profile picture.png" class="profilePic"/></li>
-              <li><div class="teamName">TEAMNAME</div></li>
-              <li><div class="pointRank">POINT | RANK</div></li>
-              <li class="active menuItem"><a href="#"><img src="images/Icons/currentConquests.png" class="sidebarIcon" />Current Conquests</a></li>
+              <li ng-show="loggedIn"><div class="teamName">{{ user.clan | uppercase }} CLAN</div></li>
+              <li><div class="pointRank"> POINTS: {{ user.score }} | RANK: 1</div></li>
+              <li class="active menuItem"><a href="#/map/user"><img src="images/Icons/currentConquests.png" class="sidebarIcon" />Current Conquests</a></li>
               <li class="menuItem"><a href="#"><img src="images/Icons/futureConquests.png" class="sidebarIcon" />Future Conquests</a></li>
               <li class="menuItem"><a href="#"><img src="images/Icons/leaderboard.png" class="sidebarIcon" />Leaderboard</a></li>
               <li class="menuItem"><form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
@@ -96,8 +96,8 @@
                 <img id="loadingIndicator" src="/images/loader.gif">
                 <mapbox map-id="efwiz.ln2kghlc" lat="37.98" lng="-100.487" zoom="4">
                   <marker ng-repeat="marker in markers"
-                          lat="{{marker.latitude}}"
-                          lng="{{marker.longitude}}"
+                          lat="{{marker.location.latitude}}"
+                          lng="{{marker.location.longitude}}"
                           color="{{marker.color}}" icon="{{marker.icon}}">
                     <h1>{{marker.location.recArea.RecAreaName}}</h1>
                   </marker>

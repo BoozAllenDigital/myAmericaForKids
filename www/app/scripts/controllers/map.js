@@ -9,16 +9,21 @@
  */
 angular.module('myAmericaApp')
   .controller('MapCtrl', function ($scope, $rootScope, $cookies,
-    mapboxService, recareas, locations, users, 
+    mapboxService, recareas, recarea, locations, users, 
     $location, $timeout, $routeParams) {
+
   	mapboxService.init({ 
   		accessToken: 'pk.eyJ1IjoiZWZ3aXoiLCJhIjoiWVIycVV6VSJ9.wGMdBSconq7jIy37o15GIw',
   	});
 
+    $scope.markers = [];
+
     $scope.$on('$routeChangeSuccess', function() {
       if ($routeParams.param == 'user' && $cookies['userName']) {
         getForUser($cookies['userName']);
-      }    
+      } else if (!$routeParams.param) {
+        getAll();
+      }
     });
 
 
@@ -51,6 +56,8 @@ angular.module('myAmericaApp')
         type = 'normal';
       }
   		locations.forEach(function(location) {
+        var marker = {};
+
   			if (location.latitude != null && location.latitude != "") {
           marker.location = location;
           marker.color = styles[type].color;
@@ -65,6 +72,8 @@ angular.module('myAmericaApp')
   				$scope.markers.push(marker);
   			}
   		});
+
+      mapboxService.fitMapToMarkers();
   	}
 
 	$scope.locate = function() {
@@ -76,22 +85,44 @@ angular.module('myAmericaApp')
 				longitude: geoposition.coords.longitude,
 				radius: 5
 			}, function(results) {
+        endLoading();
+
 				var recarea = results.RECDATA[0];
         var location = { 
           recArea: recarea,
           latitude: recarea.RecAreaLatitude,
           longitude: recarea.RecAreaLongitude
         };
+
+        $scope.markers = [];
+        console.log($scope.markers);
 				addMarkers([ location ]);
 				$location.path('/park/' + recarea.RecAreaID);
-			});
+			}, endLoading);
 		});
 	}
 
   function getForUser(userName) {
     locations.query({userName: userName}, function(results) {
-      addMarkers(location, $rootScope.user.clan);
+      $scope.markers = [];
+      addMarkers(results, $rootScope.user.clan);
     });
+  }
+
+  function getAll() {
+    locations.query({}, function(results) {
+      var wolfLocations = [], bearLocations = [];
+      results.forEach(function(result) {
+        if (result.clan.indexOf('bear' >= 0)) {
+          bearLocations.push(result);
+        } else if (result.clan.indexOf('wolf') >= 0) {
+          wolfLocations.push(result);
+        }
+      });
+
+      addMarkers(wolfLocations, 'wolf');
+      addMarkers(bearLocations, 'bear');
+    })
   }
 
   });

@@ -1,3 +1,4 @@
+
 .navbar {
 	margin-bottom: 0px;
 }
@@ -10,18 +11,20 @@
 .angular-mapbox-map {
   position: absolute;
   min-height: 350px !important;
-  height: 95%;
+  height: 100% !important;
   width: 100% !important;
   z-index: -1;
 }
 
 .main-area {
+  z-index: 1;
 	padding-left: 0px;
+  height: 480px;
 }
 
 .geolocation-button {
 	position: absolute;
-	top: 75px;
+	top: 25px;
 	right: 25px;
 	width: 50px;
 	height: 50px;
@@ -33,6 +36,10 @@
 			height: 25px;
 		}
 	}
+}
+
+.logout-button {
+  margin-left: 75px;
 }
 
 .map-action-buttons {
@@ -47,7 +54,7 @@ $dark-blue: #2c3e50;
 .bottom-panel {
 	position: absolute;
 	background: white;
-	top: 300px;
+	bottom: 0px;
 	width: 100%;
 
 	.title-row {
@@ -63,6 +70,11 @@ $dark-blue: #2c3e50;
 	.detail-row {
 		padding-left: 10px;
 	}
+
+  .action-row {
+    margin-left: 100px;
+    padding-bottom: 10px;
+  }
 
 	.photo-row {
 

@@ -1,4 +1,5 @@
-angular.module('myAmericaApp').controller('ParkCtrl', function($scope, $routeParams, recarea) {
+angular.module('myAmericaApp').controller('ParkCtrl', function($scope, $rootScope, $location,
+	$routeParams, recarea, locations) {
 	
 	recarea.get({id: $routeParams.parkId}, function(recarea) {
 		$scope.recarea = recarea;
@@ -6,6 +7,24 @@ angular.module('myAmericaApp').controller('ParkCtrl', function($scope, $routePar
 	});
 
   	var flickr = new Flickr({api_key: '8262b0943aab5ff21e2ce2e129c74cb0'});
+
+  	function checkIn() {
+		navigator.geolocation.getCurrentPosition(function(geoposition) {
+			locations.save({
+				clan: $rootScope.user.clan,
+				fromCamera: false,
+				latitude: geoposition.coords.latitude,
+				longitude: geoposition.coords.longitude,
+				recAreaId: recarea.RecAreaID,
+				score: 1,
+				userName: $rootScope.user.userName
+			}, function() {
+				$location.path('/map/user');
+			});
+		});
+  	}
+
+  	$scope.checkIn = checkIn;
 
   	function findPhotos(recarea) {
     	var lat = recarea.RecAreaLatitude;
