@@ -55,7 +55,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Ascent</a>
+            <a class="navbar-brand" href="#">
+              <img src="/images/ascentLogo.png" style="
+                max-height: 100%;
+              ">
+            </a>
           </div>
         </div>
       </div>
@@ -75,7 +79,7 @@
               </li>
               <li><img src="images/profile picture.png" class="profilePic"/></li>
               <li ng-show="loggedIn"><div class="teamName">{{ user.clan | uppercase }} CLAN</div></li>
-              <li><div class="pointRank"> POINTS: {{ user.score }} | RANK: 1</div></li>
+              <li ng-show="loggedIn"><div class="pointRank"> POINTS: {{ user.score }} | RANK: 1</div></li>
               <li class="active menuItem"><a href="#/map/user"><img src="images/Icons/currentConquests.png" class="sidebarIcon" />Current Conquests</a></li>
               <li class="menuItem"><a href="#"><img src="images/Icons/futureConquests.png" class="sidebarIcon" />Future Conquests</a></li>
               <li class="menuItem"><a href="#"><img src="images/Icons/leaderboard.png" class="sidebarIcon" />Leaderboard</a></li>
