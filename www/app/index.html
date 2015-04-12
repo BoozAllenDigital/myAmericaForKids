@@ -103,7 +103,7 @@
                           lat="{{marker.location.latitude}}"
                           lng="{{marker.location.longitude}}"
                           color="{{marker.color}}" icon="{{marker.icon}}">
-                    <h1>{{marker.location.recArea.RecAreaName}}</h1>
+                    <a ng-href="#/park/{{marker.location.recAreaId}}"><h1>{{marker.location.recArea.RecAreaName}}</h1></a>
                   </marker>
                 </mapbox>
 
