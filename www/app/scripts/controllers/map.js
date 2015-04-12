@@ -16,28 +16,6 @@ angular.module('myAmericaApp')
   	$timeout(function() {
 	  	var map = mapboxService.getMapInstances()[0];
   	}, 100);
-  	var flickr = new Flickr({api_key: '8262b0943aab5ff21e2ce2e129c74cb0'});
-
-  	function findPhotos(lat, lng) {
-    	var lat = 37.839126586;
-	  	var lng = -119.54084014;
-  		var radius = 5;
-
-	  	flickr.photos.search({
-	  		media: 'photos',
-	  		lat: lat,
-	  		lng: lng,
-	  		text: 'national park',
-	  		radius: radius
-	  	}, function(err, result) {
-	  		result.photos.photo.forEach(function(photo) {
-	  			var url = 'https://farm' + photo.farm 
-	  			+ '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
-	  			console.log(url);
-	  		})
-	  	});
-  	}
-
 
   	function startLoading() {
   		$('#loadingIndicator').show();
