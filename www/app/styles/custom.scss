@@ -10,9 +10,16 @@
 .angular-mapbox-map {
   position: absolute;
   top: 50px;
-  height: 350px !important;
-  width: 100% !important;
+  min-height: 350px !important;
+  height: 95%;
+  width: 95% !important;
   z-index: -1;
+}
+
+.geolocation-button {
+	position: absolute;
+	top: 75px;
+	right: 25px;
 }
 
 .map-action-buttons {
@@ -27,7 +34,7 @@ $dark-blue: #2c3e50;
 .bottom-panel {
 	position: absolute;
 	background: white;
-	top: 300px;
+	bottom: 0px;
 	width: 100%;
 
 	.title-row {
@@ -37,7 +44,7 @@ $dark-blue: #2c3e50;
 
 		h1 {
 			font-size: 18px;
-		}	
+		}
 	}
 
 	.detail-row {
