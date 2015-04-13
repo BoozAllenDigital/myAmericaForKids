@@ -115,12 +115,11 @@ angular.module('myAmericaApp')
 
       var num = 0;
       results.forEach(function(result) {
-        if (num % 2 == 0) {
+        if (result.clan.indexOf('bear' >= 0)) {
           bearLocations.push(result);
-        } else {
+        } else if (result.clan.indexOf('wolf') >= 0) {
           wolfLocations.push(result);
         }
-        num += 1;
       });
 
       addMarkers(wolfLocations, 'wolf');
