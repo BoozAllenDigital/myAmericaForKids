@@ -55,6 +55,9 @@ class LocationsImpl
     end
 
     location = Location.new
+    user = User.where(userName: params['userName']).first
+
+    location.users.push(user)
     location.userName = params['userName']
     location.latitude = params['latitude']
     location.longitude = params['longitude']
@@ -64,8 +67,6 @@ class LocationsImpl
     location.fromCamera = params['fromCamera']
     location.insert
 
-    user = User.where(userName: params['userName']).first
-    puts user.to_json
     user.update_attribute(:score, (user[:score] + params['score']))
 
     return 'Location added for user'

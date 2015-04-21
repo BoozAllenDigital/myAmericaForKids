@@ -1,4 +1,5 @@
 require 'mongoid'
+require_relative 'location'
 
 class User
   include Mongoid::Document
