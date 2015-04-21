@@ -1,6 +1,6 @@
-# API for FedBoozOpps
+# API for Ascent
 
-This is the directory for all resources regarding the API layer of the FedBoozOpps application. To see existing documentation on routes please refer to [the documentation](docs/README.md).
+This is the directory for all resources regarding the API layer of the Ascent application. To see existing documentation on routes please refer to [the documentation](docs/README.md).
 
 ## Usage:
 
@@ -8,12 +8,6 @@ This is the directory for all resources regarding the API layer of the FedBoozOp
     rackup
 
 This will start a server at http://localhost:9292.
-
-## Dockerfile
-
-Run these command from directory that has Dockerfile.
-
-To quickly get up and running a dockerfile is provided, as well as a [shell script](bin/start.sh) to bring it up with the correct port forwarding.
 
 ## Contributing:
 
